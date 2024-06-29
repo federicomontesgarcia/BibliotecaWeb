@@ -4,7 +4,7 @@ Pasos para la instalación:
 1. Clonar el repositorio.
    git clone https://github.com/federicomontesgarcia/BibliotecaWeb
 2. Crear y activar un entorno virtual de python (ejemplo para ubuntu).
-   python -m venv env
+   python -m venv env, luego:
    source env/bin/activate 
 3. Instalar las dependencias del proyecto a partir del archivo requirements.txt.
    pip install -r requirements.txt
