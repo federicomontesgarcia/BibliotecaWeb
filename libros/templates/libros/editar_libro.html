@@ -1,0 +1,106 @@
+{% extends 'BibliotecaWebApp/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="card-body" style="background-color: white;">
+        <div class="row justify-content-center">
+            <h2 style="text-align: center;">Editar la información del Libro</h2>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form method="POST" action="{% url 'grabar_editar_libro' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center;">Nombre</th>
+                        <th scope="col" style="text-align: center;">Autor</th>
+                        <th scope="col" style="text-align: center;">Género</th>
+                        <th scope="col" style="text-align: center;">Editorial</th>
+                        <th scope="col" style="text-align: center;">Fecha de publicación</th>
+                        <th scope="col" style="text-align: center;">Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyLibros">
+                    {% for libro in data %}
+                        <tr>
+                            <td style="text-align: center;">
+                                <input type="text" name="bookName" id="bookName" value="{{ libro.nombre }}">
+                            </td>
+                            <td style="text-align: center;">
+                                <input type="text" name="author" id="author" value="{{ libro.autor }}" readonly>
+                            <select id="selectAuthor" class="form-control" onchange="updateInputAuthor()">
+                                {% for author in autores %}
+                                    <option value="{{ author.nombre }} {{ author.apellido }}">{{ author.nombre }}{{ " " }}{{ author.apellido }}</option>
+                                {% endfor %}
+                            </select>
+                            </td>
+                            <td style="text-align: center;">
+                                <input type="text" name="gender" id="gender" value="{{ libro.genero }}" readonly>
+                                <select id="selectGender" class="form-control" onchange="updateInputGender()">
+                                    {% for gender in generos %}
+                                        <option value="{{ gender.nombre }}">{{ gender.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td style="text-align: center;">
+                                <input type="text" name="editorial" id="editorial" value="{{ libro.editorial }}">
+                            </td>
+                            <td style="text-align: center;">
+                                <input type="text" name="year" id="year" value="{{ libro.fecha }}">
+                            </td>
+                            <td style="text-align: center;">
+                                <input type="text" name="price" id="price" value="{{ libro.precio }}">
+                            </td>
+                            <td style="text-align: center;">
+                                <input type="hidden" name="id" id="id" value="{{ libro.id }}">
+                            </td>
+                            <td style="text-align: center;">
+                                <input type="hidden" name="imagen" id="imagen" value="{{ libro.imagen }}">
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        <div class="modal-footer justify-content-center">
+            <div class="form-group col-md-4 mb-0" id="div_save_book_edit">
+                <button type="submit" class="save-book-edit btn btn-primary" id="save-book-edit-btn">Guardar</button>
+                <button class="btn btn-primary btn-block sp-book" type="button" disabled hidden>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Guardando...
+                </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='{% url 'Libros' %}'">Cancelar</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function updateInputAuthor() {
+        var select = document.getElementById("selectAuthor");
+        var input = document.getElementById("author");
+        input.value = select.options[select.selectedIndex].value;
+    }
+</script>
+
+<script>
+    function updateInputGender() {
+        var select = document.getElementById("selectGender");
+        var input = document.getElementById("gender");
+        input.value = select.options[select.selectedIndex].value;
+    }
+</script>
+
+{% endblock content %}
+

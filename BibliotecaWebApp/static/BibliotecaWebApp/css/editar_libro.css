@@ -1,0 +1,98 @@
+/* Estilos para el modal */
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal-dialog {
+    position: relative;
+    margin: 15px auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.modal-header {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    background-color: #f0f0f0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.modal-footer button {
+    margin: 5px;
+}
+
+/* Estilos para los inputs y selects */
+.form-control {
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control-file {
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Estilos para los botones */
+.btn {
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #337ab7;
+    border-color: #23527c;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #337ab7;
+    border-color: #23527c;
+    color: #fff;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Estilos para el spinner */
+.spinner-border {
+    margin-right: 5px;
+}
